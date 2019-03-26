@@ -55,16 +55,16 @@ class Ui_Form(object):
         self.home = QtWidgets.QPushButton(Form)
         self.home.setGeometry(QtCore.QRect(150, 350, 80, 25))
         self.home.setObjectName("home")
-        self.home.clicked.connect(self.onClickTableHome)
+        # self.home.clicked.connect(self.onClickTableHome)
         self.comboBox = QtWidgets.QComboBox(Form)
         self.comboBox.setGeometry(QtCore.QRect(150, 50, 72, 25))
         self.comboBox.setSizeIncrement(QtCore.QSize(0, 3))
         self.comboBox.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
+        self.comboBox.addItem("1")
+        self.comboBox.addItem("2")
+        self.comboBox.addItem("3")
+        self.comboBox.addItem("4")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -86,22 +86,22 @@ class Ui_Form(object):
 
 
     def onClickTable1(self) :
-      if self.comboBox.currentText == "1" :
+      if self.comboBox.currentText() == "1" :
         self.movebase_client(48.77, 50.06, 0.66,1)
-      elif self.comboBox.currentText == "2" :
+      elif self.comboBox.currentText() == "2" :
         self.movebase_client(48.77, 50.06, 0.66,2)
-      elif self.comboBox.currentText == "3" :
+      elif self.comboBox.currentText() == "3" :
         self.movebase_client(48.77, 50.06, 0.66,3)                
       else :
         self.movebase_client(48.77, 50.06, 0.66,4)
 
     def onClickTable2(self) :
 
-      if self.comboBox.currentText == "1" :
+      if self.comboBox.currentText() == "1" :
         self.movebase_client(49.52, 51.44, -0.101,1)
-      elif self.comboBox.currentText == "2" :
+      elif self.comboBox.currentText() == "2" :
         self.movebase_client(49.52, 51.44, -0.101,2)
-      elif self.comboBox.currentText == "3" :
+      elif self.comboBox.currentText() == "3" :
         self.movebase_client(49.52, 51.44, -0.101,3)               
       else :
         self.movebase_client(49.52, 51.44, -0.101,4)
@@ -109,43 +109,43 @@ class Ui_Form(object):
       # self.movebase_client(49.52, 51.44, -0.101)
     
     def onClickTable12(self) :
-      if self.comboBox.currentText == "1" :
+      if self.comboBox.currentText() == "1" :
         self.movebase_client(53.72, 48.09, 0.673,1)
-      elif self.comboBox.currentText == "2" :
+      elif self.comboBox.currentText() == "2" :
         self.movebase_client(53.72, 48.09, 0.673,2)
-      elif self.comboBox.currentText == "3" :
+      elif self.comboBox.currentText() == "3" :
         self.movebase_client(53.72, 48.09, 0.673,3)               
       else :
         self.movebase_client(53.72, 48.09, 0.673,4)
       
 
     def onClickTable21(self) :
-      if self.comboBox.currentText == "1" :
+      if self.comboBox.currentText() == "1" :
         self.movebase_client(87.636, 46.83, 0.699,1)
-      elif self.comboBox.currentText == "2" :
+      elif self.comboBox.currentText() == "2" :
         self.movebase_client(87.636, 46.83, 0.699,2)
-      elif self.comboBox.currentText == "3" :
+      elif self.comboBox.currentText() == "3" :
         self.movebase_client(87.636, 46.83, 0.699,3)               
       else :
         self.movebase_client(87.636, 46.83, 0.699,4)
       
 
     def onClickTable22(self) :
-      if self.comboBox.currentText == "1" :
+      if self.comboBox.currentText() == "1" :
         self.movebase_client(57.40, 53.19, 0.65,1)
-      elif self.comboBox.currentText == "2" :
+      elif self.comboBox.currentText() == "2" :
         self.movebase_client(57.40, 53.19, 0.65,2)
-      elif self.comboBox.currentText == "3" :
+      elif self.comboBox.currentText() == "3" :
         self.movebase_client(57.40, 53.19, 0.65,3)               
       else :
         self.movebase_client(57.40, 53.19, 0.65,4)      
 
     def onClickTable11(self) :
-      if self.comboBox.currentText == "1" :
+      if self.comboBox.currentText() == "1" :
         self.movebase_client(48.60, 47.66, -0.102,1)
-      elif self.comboBox.currentText == "2" :
+      elif self.comboBox.currentText() == "2" :
         self.movebase_client(48.60, 47.66, -0.102,2)
-      elif self.comboBox.currentText == "3" :
+      elif self.comboBox.currentText() == "3" :
         self.movebase_client(48.60, 47.66, -0.102,3)               
       else :
         self.movebase_client(48.60, 47.66, -0.102,4)         
@@ -154,14 +154,14 @@ class Ui_Form(object):
     #   self.movebase_client()
 
     def movebase_client(self,x,y,w, client_no):
-
+      print("details are",x,y,w,client_no)
       # Create an action client called "move_base" with action definition file "MoveBaseAction"
         # client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
     
       # Waits until the action server has started up and started listening for goals.
 #        client.wait_for_server()
 
-      # Creates a new goal with the MoveBaseGoal constructor
+      # # Creates a new goal with the MoveBaseGoal constructor
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = "map"
         goal.target_pose.header.stamp = rospy.Time.now()
